@@ -2,10 +2,7 @@ package com.iktpreobuka.Gradebook.entities;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -15,5 +12,10 @@ public class Student {
     private Long id;
     private String firstName;
     private String lastName;
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "user_id")
+    private User user;
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
+    private Class aClass;
 
 }

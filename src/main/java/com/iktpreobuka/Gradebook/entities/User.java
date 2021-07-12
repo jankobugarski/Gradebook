@@ -16,4 +16,10 @@ public class User {
     private String password;
     @OneToMany(mappedBy = "user",fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
     private List<Teacher> teachers;
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
+    private List<Admin> admins;
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
+    private List<Student> students;
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
+    private List<Parent> parents;
 }
