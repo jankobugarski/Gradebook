@@ -3,6 +3,7 @@ package com.iktpreobuka.Gradebook.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -20,5 +21,7 @@ public class Student {
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
     @JoinColumn(name = "parent_id")
     private Parent parent;
+    @OneToMany(mappedBy = "student",fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
+    private List<Grade> grades;
 
 }

@@ -15,5 +15,7 @@ public class Subject {
     private Integer numberOfClasses;
     @OneToMany(mappedBy = "subject",fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
     private List<SubjectTeacher> subjectTeachers;
+    @OneToMany(mappedBy = "subject",fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
+    private List<Grade> grades;
 
 }

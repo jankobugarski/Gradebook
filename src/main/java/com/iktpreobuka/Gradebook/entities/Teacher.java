@@ -1,5 +1,6 @@
 package com.iktpreobuka.Gradebook.entities;
 
+import com.iktpreobuka.Gradebook.enums.Marks;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,5 +21,8 @@ public class Teacher {
     private List<TeacherClass>teacherClasses;
     @OneToMany(mappedBy = "teacher",fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
     private List<SubjectTeacher>subjectTeachers;
+    @OneToMany(mappedBy = "teacher",fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
+    private List<Grade> grades;
+
 
 }
