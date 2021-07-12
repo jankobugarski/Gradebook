@@ -17,5 +17,8 @@ public class Student {
     private User user;
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
     private Class aClass;
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "parent_id")
+    private Parent parent;
 
 }

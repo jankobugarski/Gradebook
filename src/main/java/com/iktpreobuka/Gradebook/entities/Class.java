@@ -13,5 +13,5 @@ public class Class {
     private Long id;
     private String name;
     @OneToMany(mappedBy = "aClass",fetch = FetchType.LAZY,cascade =CascadeType.REFRESH)
-    private List<Student> students;
+    private List<TeacherClass> teacherClasses;
 }
