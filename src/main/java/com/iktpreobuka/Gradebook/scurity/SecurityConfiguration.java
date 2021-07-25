@@ -63,10 +63,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/addUsers").permitAll() // bez logovanja dostupni samo servisi login
                 .antMatchers("/api/login").permitAll()
                 .antMatchers("/addAdmin").permitAll()
-                .antMatchers("/addUser").permitAll()
+//                .antMatchers("/addUser").authenticated()
 //                .antMatchers("/addRole").authenticated()
 
-                .anyRequest().permitAll(); // za ostale akcije se mora biti ulogovan
+                .anyRequest().authenticated(); // za ostale akcije se mora biti ulogovan
 
         // pre standardnog Spring filtera, postavlja se nas filter za postavljanje korisnika na osnovu
         // JWT tokena u zahtevu
