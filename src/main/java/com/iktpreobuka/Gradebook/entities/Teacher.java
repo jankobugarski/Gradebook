@@ -14,14 +14,14 @@ public class Teacher {
     private Long id;
     private String firstName;
     private String lastName;
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToMany(mappedBy = "teacher",fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
-    private List<TeacherClass>teacherClasses;
-    @OneToMany(mappedBy = "teacher",fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
-    private List<SubjectTeacher>subjectTeachers;
-    @OneToMany(mappedBy = "teacher",fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
+    @OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    private List<TeacherClass> teacherClasses;
+    @OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    private List<SubjectTeacher> subjectTeachers;
+    @OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     private List<Grade> grades;
 
 
