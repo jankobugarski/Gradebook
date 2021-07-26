@@ -57,7 +57,7 @@ public class UserController {
             return new ResponseEntity<String>("Invalid login", HttpStatus.BAD_REQUEST);
         }
     }
-//    @Secured("Admin")
+    @Secured("Admin")
     @RequestMapping(method = RequestMethod.POST,value = "/addUser")
     public ResponseEntity<?> addUser(@RequestBody User user){
 

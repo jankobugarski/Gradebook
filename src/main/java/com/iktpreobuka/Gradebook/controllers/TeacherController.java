@@ -11,6 +11,7 @@ import com.iktpreobuka.Gradebook.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,6 +47,7 @@ public class TeacherController {
         return new ResponseEntity<>(teacher,HttpStatus.ACCEPTED);
 
     }
+//    @Secured("Teacher")
     @PostMapping(value = "/addTeacherToClass")
     public ResponseEntity<?> addTeacherToClass(@RequestParam Long teacherId,@RequestParam Long classId){
         TeacherClass teacherClass =new TeacherClass();
