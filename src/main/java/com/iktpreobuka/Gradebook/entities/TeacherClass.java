@@ -7,8 +7,8 @@ import javax.persistence.*;
 @Data
 @Entity
 public class TeacherClass {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "teacher_id")
