@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class SubjectController {
-  @Autowired
+ @Autowired
     SubjectRepository subjectRepository;
-    @PostMapping(value="/addSubject")
-    public ResponseEntity<Subject> addSubject(@RequestParam String name,@RequestParam Integer numberOfClasses){
 
-        Subject subject=new Subject();
-        subject.setName(name);
-        subject.setNumberOfClasses(numberOfClasses);
-        subjectRepository.save(subject);
-        return new ResponseEntity<>(subject, HttpStatus.ACCEPTED);
-
+    @PostMapping(value = "/addSubject")
+    public ResponseEntity<Subject> addSubject(@RequestParam String subjectName, @RequestParam Integer numberOfClasses) {
+      Subject subject=new Subject();
+      subject.setName(subjectName);
+      subject.setNumberOfClasses(numberOfClasses);
+      subjectRepository.save(subject);
+     return new ResponseEntity<>(subject, HttpStatus.ACCEPTED);
     }
+
 }

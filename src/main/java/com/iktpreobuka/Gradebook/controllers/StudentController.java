@@ -1,6 +1,8 @@
 package com.iktpreobuka.Gradebook.controllers;
 
+import com.iktpreobuka.Gradebook.entities.Class;
 import com.iktpreobuka.Gradebook.entities.Student;
+import com.iktpreobuka.Gradebook.repositories.ClassRepository;
 import com.iktpreobuka.Gradebook.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,8 @@ public class StudentController {
 
     @Autowired
     StudentRepository studentRepository;
+    @Autowired
+    ClassRepository classRepository;
 
     @PostMapping(value="/addStudent")
     public ResponseEntity<Student> addStudent(@RequestParam String firstName,@RequestParam String lastName){
@@ -27,7 +31,8 @@ public class StudentController {
     public void addClassToStudent(@RequestParam Long studentId,@RequestParam Long classId){
 
         Student student=studentRepository.findById(studentId).orElseThrow( ()-> new UsernameNotFoundException("Student not found"));
-        student.setId(classId);
+        Class clas=classRepository.findById(classId).orElseThrow( ()-> new UsernameNotFoundException("Class not found"));
+        student.setAClass(clas);
         studentRepository.save(student);
     }
 }
