@@ -2,7 +2,16 @@ package com.iktpreobuka.Gradebook.servicies;
 
 import com.iktpreobuka.Gradebook.entities.Grade;
 
-public interface GradeDao {
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
 
-    Grade insert(Long studentId, Long teacherId, Long subjectId);
+public interface GradeDao {
+    @PersistenceContext
+
+    Grade insert(Integer marks,Long studentId, Long teacherId, Long subjectId);
+
+    Double avg(Long studentId,Long subjectId);
+    List<Integer> getGrade(Long studentId);
+
 }
