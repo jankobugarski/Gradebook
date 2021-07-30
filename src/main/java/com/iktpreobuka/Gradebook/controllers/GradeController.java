@@ -26,18 +26,19 @@ public class GradeController {
     }
 
     @GetMapping(value="/avg")
-    public  ResponseEntity<?> getAvg(@RequestParam Long studentId,@RequestParam Long subjectId){
+    public  ResponseEntity<?> getAvg(@RequestParam Long studentId,@RequestParam Long subjectId,@RequestParam Long parentId){
 
 
-       Double avg= gradeDao.avg(studentId,subjectId);
+       Double avg= gradeDao.avg(studentId,parentId,subjectId);
        return new ResponseEntity<>(avg,HttpStatus.OK);
     }
 
     @GetMapping(value="/getGrades")
-    public ResponseEntity<?> getGrades(@RequestParam Long studentId){
+    public ResponseEntity<?> getGrades(@RequestParam Long studentId,@RequestParam Long parentId){
 
-        List<Integer> allGrades=gradeDao.getGrade(studentId);
+        List<Integer> allGrades=gradeDao.getGrade(studentId,parentId);
         return new ResponseEntity<>(allGrades,HttpStatus.OK);
     }
+
 
 }

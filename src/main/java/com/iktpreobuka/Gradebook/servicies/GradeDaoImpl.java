@@ -19,6 +19,7 @@ public class GradeDaoImpl implements GradeDao {
     private final SubjectRepository subjectRepository;
     private final GradeRepository gradeRepository;
 
+
     @Override
     public Grade insert(Integer marks, Long teacherId, Long subjectId, Long studentId) {
         if (subjectTeacherRepository.canTeacherGrade(teacherId, subjectId, studentId)) {
@@ -43,16 +44,23 @@ public class GradeDaoImpl implements GradeDao {
         }
     }
 
-
-    public Double avg(Long studentId, Long subjectId) {
-        Double avg = gradeRepository.countAvg(studentId, subjectId);
-        return avg;
+    @Override
+    public Double avg(Long studentId, Long parentId, Long subjectId) {
+        if (gradeRepository.canParentSee( parentId,studentId)) {
+            Double avg = gradeRepository.countAvg(studentId, subjectId);
+            return avg;
+        } else {
+            return null;
+        }
     }
 
     @Override
-    public List<Integer> getGrade(Long studentId) {
+    public List<Integer> getGrade(Long studentId, Long parentId) {
+        if(gradeRepository.canParentSee(parentId,studentId)){
         List<Integer> grd = gradeRepository.getGrades(studentId);
         return grd;
     }
-
-}
+          else {
+              return null;
+        }
+}}

@@ -20,6 +20,15 @@ public interface GradeRepository extends CrudRepository<Grade, Long> {
 
     @Query(nativeQuery = true,
             value = "select marks from grade where grade.student_id= :student_id")
+    List<Integer> getGrades(@Param("student_id") Long student_id);
 
-      List<Integer> getGrades(@Param("student_id") Long student_id);
+    @Query(nativeQuery = true,
+            value = "select case when count(g.id) > 0 then 'true' else 'false' end as exist from grade g join student s on g.student_id=s.id where s.parent_id=:parent_id and g.student_id=:student_id"
+
+                    )
+    boolean canParentSee(@Param("parent_id")Long parentId,
+                         @Param("student_id")Long studentId
+                         );
+
+
 }

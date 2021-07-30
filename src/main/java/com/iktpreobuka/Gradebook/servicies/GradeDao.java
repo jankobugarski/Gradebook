@@ -11,7 +11,8 @@ public interface GradeDao {
 
     Grade insert(Integer marks,Long studentId, Long teacherId, Long subjectId);
 
-    Double avg(Long studentId,Long subjectId);
-    List<Integer> getGrade(Long studentId);
+    Double avg(Long studentId,Long parentId,Long subjectId);
+    List<Integer> getGrade(Long studentId,Long parentId);
+
 
 }
