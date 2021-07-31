@@ -63,4 +63,18 @@ public class GradeDaoImpl implements GradeDao {
           else {
               return null;
         }
-}}
+}
+
+    @Override
+    public List<Integer> getGradeSubject(Long studentId, Long parentId, Long subjectId) {
+
+        if(gradeRepository.canParentSee(parentId,studentId)){
+
+            List<Integer> fromSub=gradeRepository.getGradesSubj(studentId,subjectId);
+            return fromSub;
+        }
+        return null;
+    }
+
+
+}

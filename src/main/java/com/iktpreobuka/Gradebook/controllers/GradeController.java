@@ -39,6 +39,12 @@ public class GradeController {
         List<Integer> allGrades=gradeDao.getGrade(studentId,parentId);
         return new ResponseEntity<>(allGrades,HttpStatus.OK);
     }
+    @GetMapping(value = "getGradeSubject")
+    public ResponseEntity<?> getGradeSubject(@RequestParam Long studentId,@RequestParam Long parentId,@RequestParam Long subjectId){
 
+        List<Integer>gradesSub=gradeDao.getGradeSubject(studentId,parentId,subjectId);
+        return new ResponseEntity<>(gradesSub,HttpStatus.OK);
+
+    }
 
 }
