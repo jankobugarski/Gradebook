@@ -63,7 +63,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/addUsers").permitAll() // bez logovanja dostupni samo servisi login
                 .antMatchers("/api/login").permitAll()
                 .antMatchers("/addAdmin").permitAll()
-//                .antMatchers("/addUser").authenticated()
+//                .antMatchers("/addUser").permitAll()
 //                .antMatchers("/addRole").authenticated()
 
                 .anyRequest().authenticated(); // za ostale akcije se mora biti ulogovan
